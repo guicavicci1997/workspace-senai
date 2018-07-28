@@ -1,0 +1,33 @@
+@charset "UTF-8";
+
+head {
+	
+	
+}
+
+body {
+	padding: 10px;
+    width: 100%;
+    height: 450px;
+    background-image: url("../images/citroen-ds5.jpg");
+	
+}
+
+
+.atb_cadastro {
+
+
+}
+
+#form_cad {
+	margin-left: auto;
+    margin-right: auto;
+    width: 6em
+    
+}
+
+#opcoes_carros {
+	
+	
+}
+

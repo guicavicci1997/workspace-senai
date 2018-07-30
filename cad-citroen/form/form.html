@@ -12,24 +12,24 @@
     <h1 id = "titulo_form"> Formulário de cadastro para Teste Drive Citroen</h1>\
 
     <!-- <form id = "form_cad" action="${s:mvcUrl('PFC#gravar').build()}" method="post" commandName = "pessoaFisica"> -->
-    <form id = "form_cad"></form>
+    <form id = "form_cad" name="form" onSubmit="return validaForm();">
 
         <div>
             <label class ="atb_cadastro">Nome</label>
-            <input type="text">
-            <script>validaForm()</script>
+            <input type="text" name="nome">
+           
         </div>
         <div class ="atb_cadastro">
             <label>Sobrenome</label>
-            <input type="text">
+            <input type="text" name = "sobrenome">
         </div>
         <div>
             <label class ="atb_cadastro">Data de Nascimento</label>
-            <input type="date">
+            <input type="date" name = "data">
         </div>
         <div class ="atb_cadastro">
             <label>Renda Mensal</label>
-            <input type="text">
+            <input type="text" name="rendaMensal">
         </div>
         <div id = "opcoes_carros" class ="atb_cadastro"> 
             <label class ="atb_cadastro">Opções de Carros</label>

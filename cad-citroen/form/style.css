@@ -9,7 +9,8 @@ body {
 	padding: 10px;
     width: 100%;
     height: 450px;
-    background-image: url("/home/gneves/wp-gui/workspace-senai/cad-citroen/recursos/images/citroen-ds5.jpg");
+    /*background-image: url("/home/gneves/wp-gui/workspace-senai/cad-citroen/recursos/images/citroen-ds5.jpg");*/
+    background-image: url("C:\workspace\workspace-senai\cad-citroen\recursos\images\citroen-ds5.jpg");
     background-repeat: no-repeat;
     overflow-x: hidden;
 	

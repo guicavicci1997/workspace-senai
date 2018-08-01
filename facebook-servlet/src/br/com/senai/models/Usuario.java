@@ -8,6 +8,22 @@ public class Usuario {
 	private String senha;
 	private String genero;
 	private String dataNascimento;
+	
+	public Usuario() {
+		super();
+	}
+
+	public Usuario(String nome, String sobrenome, String email, String telefone, String senha, String genero,
+			String dataNascimento) {
+		super();
+		this.nome = nome;
+		this.sobrenome = sobrenome;
+		this.email = email;
+		this.telefone = telefone;
+		this.senha = senha;
+		this.genero = genero;
+		this.dataNascimento = dataNascimento;
+	}
 
 	public String getNome() {
 		return nome;

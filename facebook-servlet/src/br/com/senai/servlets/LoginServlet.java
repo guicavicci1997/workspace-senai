@@ -54,10 +54,12 @@ public class LoginServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
+		//Database.USUARIOS.put("a@a", newUsuario(null,null,"a@a", null, "123", null, null))
+		
 		String email = request.getParameter("email");
 		String senha = request.getParameter("senha");
 
-		Usuario usuario = Database.usuarios.get(email);
+		Usuario usuario = Database.USUARIOS.get(email);
 		
 		if (usuario != null && usuario.getSenha().equals(senha)) {
 			try {

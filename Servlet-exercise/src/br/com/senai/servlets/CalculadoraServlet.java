@@ -16,7 +16,7 @@ public class CalculadoraServlet extends HttpServlet {
 	public void service(HttpServletRequest req, HttpServletResponse resp) {
 
 		String op = req.getParameter("operacao");
-		Integer result;
+		Integer result = null;
 		
 		Integer n1 = Integer.parseInt(req.getParameter("n1"));
 		if (n1.equals("")) {

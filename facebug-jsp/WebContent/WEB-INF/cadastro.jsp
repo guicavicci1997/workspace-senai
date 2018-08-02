@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+
 <!DOCTYPE html>
 <html lang="pt-br">
     <head>
@@ -8,14 +11,9 @@
         <title>Cadastre-se no Facebug</title>
     </head>
     <body>
-        <header id="main-title">
-            <h1>facebug</h1>
-            <nav>
-                <a href="index.html">Principal</a>
-                <a href="cadastro.html">Cadastro</a>
-                <a href="login.html">Login</a>
-            </nav>
-        </header>
+    
+   <%@ include file="../WEB-INF/header.jsp" %> 
+   
         <form name="form_cadastro" action="cadastro.html" onsubmit="return validateForm()" method="post">
             
             <input type="text" id="nome" name="nome" placeholder="Nome"/>

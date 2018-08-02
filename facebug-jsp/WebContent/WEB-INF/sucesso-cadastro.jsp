@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -11,16 +13,9 @@
 
 <body>
     <section id="main">
-        <header id="main-title">
-            <h1>facebug</h1>
-            <nav>
-                <a href="index.html">Principal</a>
-                <a href="cadastro.html">Cadastro</a>
-                <a href="login.html">Login</a>
-            </nav>
-        </header>
+         <%@ include file="../WEB-INF/header.jsp" %> 
 
-        <h2>Login concluído com sucesso!</h2>
+        <h2>Cadastro concluído com sucesso!</h2>
         <footer>Copyright &copy; SENAI</footer>
     </section>
 </body>

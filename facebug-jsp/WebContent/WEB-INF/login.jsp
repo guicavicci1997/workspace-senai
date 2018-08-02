@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html lang="pt-br">
     <head>
@@ -8,14 +10,7 @@
         <title>Entrar no Facebug</title>
     </head>
     <body>
-        <header id="main-title">
-            <h1>facebug</h1>
-            <nav>
-                <a href="index.html">Principal</a>
-                <a href="cadastro.html">Cadastro</a>
-                <a href="login.html">Login</a>
-            </nav>
-        </header>
+        <%@ include file="../WEB-INF/header.jsp" %> 
         <form name="login_form" action="login.html" onsubmit="" method="post">
             
             <input type="email" id="email" name="email" placeholder="Digite seu e-mail"/>

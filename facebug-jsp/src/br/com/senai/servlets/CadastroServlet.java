@@ -5,6 +5,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -18,7 +19,7 @@ import br.com.senai.utils.FilesUtils;
 /**
  * Servlet implementation class CadastroServlet
  */
-@WebServlet("/cadastro.html")
+@WebServlet("/cadastro")
 public class CadastroServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -33,14 +34,9 @@ public class CadastroServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		Path caminho = Paths.get(FilesUtils.webInfDir.toString(), "cadastro.html");
-		System.out.println(caminho);
-    	
-		String html = new String(Files.readAllBytes(caminho.toAbsolutePath()));
-		System.out.println(html);
-		
-		response.getWriter().println(html);
+		RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/cadastro.jsp");
+		dispatcher.forward(request, response);
+
 	}
 
 	/**
@@ -69,7 +65,22 @@ public class CadastroServlet extends HttpServlet {
 		System.out.println("a");
 		System.out.println(usuario);
 		
+		this.getRequesDispatcher(request, response);
 		
+		
+	}
+
+	private void getRequesDispatcher(HttpServletRequest request, HttpServletResponse response) {
+		request.setAttribute("op", "Cadastro");
+		
+		RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("WEB-INF/msg-cadastro-login.jsp");
+		try {
+			dispatcher.forward(request, response);
+		} catch (ServletException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		
 	}
 

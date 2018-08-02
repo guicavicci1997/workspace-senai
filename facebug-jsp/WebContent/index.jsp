@@ -1,3 +1,7 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<%@ page import="java.time.LocalDateTime" %>    
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -11,19 +15,13 @@
 
 <body>
     <section id="main">
-        <header id="main-title">
-            <h1>facebug</h1>
-            <nav>
-                <a href="index.html">Principal</a>
-                <a href="cadastro.html">Cadastro</a>
-                <a href="login.html">Login</a>
-            </nav>
-        </header>
+
+	<%@ include file="../WEB-INF/header.jsp" %>       
 
         <div id="banner">
             <img alt="pessoas" src="img/people.jpg" />
         </div>
-        <footer>Copyright &copy; SENAI</footer>
+        <footer><strong>Acesso feito em: </strong><%=LocalDateTime.now() %></footer>
     </section>
 </body>
 

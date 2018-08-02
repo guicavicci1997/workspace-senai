@@ -54,10 +54,16 @@ public class CadastroServlet extends HttpServlet {
 		usuario.setEmail(request.getParameter("email"));
 		usuario.setTelefone(request.getParameter("telefone"));
 		usuario.setSenha(request.getParameter("senha"));
+		usuario.setGenero(request.getParameter("genero"));
+		usuario.setDataNascimento(request.getParameter("data-nascimento"));
+		
 		
 		//Database.USUARIOS.put("a@a", newUsuario(null,null,"a@a", null, "123", null, null))
 		
 		Database.USUARIOS.put(usuario.getEmail(), usuario);
+		
+		Database.USUARIOS.get(usuario.getEmail());
+		
 		System.out.println("a");
 		System.out.println("a");
 		System.out.println("a");

@@ -34,7 +34,7 @@ public class CadastroServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/cadastro.jsp");
+		RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/WEB-INF/cadastro.jsp");
 		dispatcher.forward(request, response);
 
 	}
@@ -73,7 +73,7 @@ public class CadastroServlet extends HttpServlet {
 	private void getRequesDispatcher(HttpServletRequest request, HttpServletResponse response) {
 		request.setAttribute("op", "Cadastro");
 		
-		RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("WEB-INF/msg-cadastro-login.jsp");
+		RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/WEB-INF/msg-cadastro-login.jsp");
 		try {
 			dispatcher.forward(request, response);
 		} catch (ServletException e) {

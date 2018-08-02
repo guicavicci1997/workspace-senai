@@ -14,7 +14,7 @@
     
    <%@ include file="../WEB-INF/header.jsp" %> 
    
-        <form name="form_cadastro" action="cadastro.html" onsubmit="return validateForm()" method="post">
+        <form name="form_cadastro" action="cadastro" onsubmit="return validateForm()" method="post">
             
             <input type="text" id="nome" name="nome" placeholder="Nome"/>
             <input type="text" id="sobrenome" name="sobrenome" placeholder="Sobrenome"/>

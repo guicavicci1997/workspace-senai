@@ -5,6 +5,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -31,66 +32,46 @@ public class LoginServlet extends HttpServlet {
 		// TODO Auto-generated constructor stub
 	}
 
-
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 response)
+	 *      response)
 	 */
-	 protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		 
-		Path caminho = Paths.get(FilesUtils.webInfDir.toString(), "login.html");
-		System.out.println(caminho);
-    	
-		String html = new String(Files.readAllBytes(caminho.toAbsolutePath()));
-		System.out.println(html);
-		
-		response.getWriter().println(html);
-	 }
-	
-	 /**
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/WEB-INF/login.jsp");
+		dispatcher.forward(request, response);
+
+	}
+
+	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 response)
+	 *      response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		//Database.USUARIOS.put("a@a", newUsuario(null,null,"a@a", null, "123", null, null))
-		
+		// Database.USUARIOS.put("a@a", newUsuario(null,null,"a@a", null, "123", null,
+		// null))
+
 		String email = request.getParameter("email");
 		String senha = request.getParameter("senha");
 
 		Usuario usuario = Database.USUARIOS.get(email);
-		
-		if (usuario != null && usuario.getSenha().equals(senha)) {
-			try {
-				Path caminho = Paths.get(FilesUtils.webInfDir.toString(), "sucesso-login.html");
-				System.out.println(caminho);
 
-				String html = new String(Files.readAllBytes(caminho.toAbsolutePath()));
-				System.out.println(html);
-				
-				Context.isLogged = Boolean.TRUE;
-				
-				response.getWriter().println(html);
-				
-				
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
+		if (usuario != null && usuario.getSenha().equals(senha)) {
+
+			Context.isLogged = Boolean.TRUE;
+			request.setAttribute("op", "login-sucesso");
+			RequestDispatcher dispatcher = request.getServletContext()
+					.getRequestDispatcher("/WEB-INF/msg-cadastro-login.jsp");
+			dispatcher.forward(request, response);
+
 		} else {
-			try {
-				Path caminho = Paths.get(FilesUtils.webInfDir.toString(), "falha-login.html");
-				System.out.println(caminho);
-	
-				String html = new String(Files.readAllBytes(caminho.toAbsolutePath()));
-				System.out.println(html);
-				
-				Context.isLogged = Boolean.FALSE;
-				
-				response.getWriter().println(html);
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
+			request.setAttribute("op", "login-falhou");
+			RequestDispatcher dispatcher = request.getServletContext()
+					.getRequestDispatcher("/WEB-INF/msg-cadastro-login.jsp");
+			dispatcher.forward(request, response);
 		}
 
 	}

@@ -35,14 +35,14 @@
                 <label for="feminino">Feminino</label>
             </section> -->
             
-            <input type="date" id="data-nascimento" id="data-nascimento" name="genero">
+            <input type="date" id="data-nascimento" name="data-nascimento">
 
             <section id="termos">
                 <input id="cb-termos" type="checkbox"/>
                 <label for="cb-termos">Eu concordo com os termos</label>
             </section>
 
-            <input type="submit" value="Clica em mim disgramaaaaa"/>
+            <input type="submit" value="Cadastrar"/>
             
         </form>
     </body>

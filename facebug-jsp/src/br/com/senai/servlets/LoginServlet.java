@@ -62,18 +62,39 @@ public class LoginServlet extends HttpServlet {
 		if (usuario != null && usuario.getSenha().equals(senha)) {
 
 			Context.isLogged = Boolean.TRUE;
-			request.setAttribute("op", "login-sucesso");
-			RequestDispatcher dispatcher = request.getServletContext()
-					.getRequestDispatcher("/WEB-INF/msg-cadastro-login.jsp");
-			dispatcher.forward(request, response);
+			
+			request.setAttribute("logado", Boolean.TRUE);
+			
+			
+			Integer.parseInt(usuario.getGenero());
+			
+			if (Integer.parseInt(usuario.getGenero()) > 50) {
+				request.setAttribute("genero", "F");		
+				
+			}else {
+				request.setAttribute("genero", "M");
+			}
+			
+			this.getRequesDispatcher(request, response);
 
-		} else {
-			request.setAttribute("op", "login-falhou");
-			RequestDispatcher dispatcher = request.getServletContext()
-					.getRequestDispatcher("/WEB-INF/msg-cadastro-login.jsp");
-			dispatcher.forward(request, response);
+		}else {
+			this.getRequesDispatcher(request, response);
 		}
 
+	}
+	
+	private void getRequesDispatcher(HttpServletRequest request, HttpServletResponse response) {
+		request.setAttribute("op", "Login");
+		
+		RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/WEB-INF/msg-cadastro-login.jsp");
+		try {
+			dispatcher.forward(request, response);
+		} catch (ServletException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
 	}
 
 }

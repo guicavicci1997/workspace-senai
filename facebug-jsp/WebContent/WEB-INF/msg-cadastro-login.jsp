@@ -19,15 +19,27 @@
 		<h2>
 		<%
 			String op = (String) request.getAttribute("op");
-			out.append(op);
+			Boolean logado = (Boolean) request.getAttribute("logado");
 			
-			if("login-sucesso".equalsIgnoreCase(op)){
+			//out.append(op);
+			
+			if(logado){
 				
-				out.append("Logado com sucesso!");
+				
+				out.append("Login realizado com sucesso!");
+				
+				String genero = (String) request.getAttribute("genero");
+				if (genero.equals("F")){
+					out.println();
+					out.append("Bem vinda, Sr!");
+				}else {
+					out.println();
+					out.append("Bem vindo, Sr!");
+				}
 				
 			}else if ("login-falhou".equalsIgnoreCase(op)){
 				
-				out.append("Login falhou.");			
+				out.append(" tente novamente.");			
 				
 			}else if("cadastro".equalsIgnoreCase(op)){
 				out.append(" realizado com sucesso!");

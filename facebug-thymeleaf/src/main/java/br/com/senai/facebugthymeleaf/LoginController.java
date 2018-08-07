@@ -18,10 +18,11 @@ public class LoginController {
 	@RequestMapping(method = RequestMethod.POST)
 	public String login(@RequestParam("email") String usuario, @RequestParam("senha") String senha, Model model) {
 		if ("a@a".equals(usuario) && "1".equals(senha)) {
-			model.addAttribute("ola", "Olá," + usuario);
+			model.addAttribute("mensagem", "Olá, " + usuario);
 			return "/WEB-INF/msg-cadastro-login";	
 		} else {
-			return "/WEB-INF/login";
+			model.addAttribute("mensagem", "O login não foi permitido para " + usuario);
+			return "/WEB-INF/msg-cadastro-login";
 		}
 	}
 }

@@ -1,5 +1,8 @@
 package br.com.senai;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,19 +17,27 @@ public class LoginController {
 	@Autowired
 	private UsuarioDAO usuarioDAO;
 	
+	@Autowired
+	private UsuarioDAOHibernate usuarioDAOH;
+	
 	@RequestMapping(method = RequestMethod.GET)
 	public String login() {
 		return "/WEB-INF/login";
 	}
 	
 	@RequestMapping(method = RequestMethod.POST)
-	public String login(@RequestParam("email") int email, @RequestParam("senha") String senha, Model model) {
+	public String login(@RequestParam("email") String email, @RequestParam("senha") String senha, Model model) {
 		
-		Usuario usuarioRecuperado = usuarioDAO.findById(email).orElse(new Usuario());
-		//Usuario usuarioRecuperado =	usuarioDAO.fi
+		//ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
+		//Usuario usuario = usuarioDAOH.getUsuario(email, senha);
 	
+		//Usuario usuarioRecuperado =	usuarioDAO.fi
 		
-		if(usuarioRecuperado.getEmail().equals(email) && usuarioRecuperado.getSenha().equals(senha)) {
+		List<Usuario> usuario = usuarioDAOH.getUsuario(email, senha);
+		System.out.println(usuario);
+		
+		
+		if(usuario.getEmail().equals(email) && usuario.getSenha().equals(senha)) {
 			model.addAttribute("mensagem", "Bem vindo" + email);
 			return "/WEB-INF/msg-cadastro-login";	
 			

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-br">
+	
+	<head th:replace="WEB-INF/fragments :: head">
+	</head>
+	
+    <body>
+        <header th:replace="WEB-INF/fragments :: headerLogin">
+		</header>
+		<h2>Minha Conta</h2>
+        <form name="form_apagar" action="apagar" onsubmit="return validateForm()" 
+        method="get">
+            
+
+            <input type="submit" value="Tá apagando porque?"/>
+            
+        </form>
+    </body>
+</html>

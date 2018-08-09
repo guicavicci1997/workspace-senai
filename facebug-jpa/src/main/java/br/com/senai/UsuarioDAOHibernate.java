@@ -20,7 +20,7 @@ public class UsuarioDAOHibernate {
 	@PersistenceContext
     private EntityManager em;
 
-    public List<Usuario> getUsuario(String email, String senha) {
+    public Usuario getUsuario(String email, String senha) {
 
         CriteriaBuilder criteriaBuilder = em.getCriteriaBuilder();
         CriteriaQuery<Usuario> query = criteriaBuilder.createQuery(Usuario.class);
@@ -28,21 +28,21 @@ public class UsuarioDAOHibernate {
         Path<String> nomePath = root.<String>get("email");
         Path<String> senhaPath = root.<String>get("senha");
         
+        // Criteria
+        // NamedQuery (jpql)
+        // Native Query
+        
         //List<Predicate> predicates = new ArrayList<>();
         
-        Predicate predicateNome = criteriaBuilder.like(nomePath, email);
+        Predicate predicateNome = criteriaBuilder.equal(nomePath, email);
         //predicates.add(predicateNome);
         Predicate predicateSenha = criteriaBuilder.equal(senhaPath, senha);
         //predicates.add(predicateSenha);
         query.where(predicateNome, predicateSenha);
         
-        
-
         TypedQuery<Usuario> typedQuery = em.createQuery(query);
-        
-        Usuario usuario = (Usuario) typedQuery;
 
-        return typedQuery.getResultList();
+        return typedQuery.getSingleResult();
     }
 
 }

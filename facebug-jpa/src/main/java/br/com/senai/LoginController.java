@@ -27,14 +27,18 @@ public class LoginController {
 	
 	@RequestMapping(method = RequestMethod.POST)
 	public String login(@RequestParam("email") String email, @RequestParam("senha") String senha, Model model) {
-		
 		//ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
-		//Usuario usuario = usuarioDAOH.getUsuario(email, senha);
+		
+		Usuario usuario = usuarioDAOH.getUsuario(email, senha);
 	
 		//Usuario usuarioRecuperado =	usuarioDAO.fi
 		
-		List<Usuario> usuario = usuarioDAOH.getUsuario(email, senha);
-		System.out.println(usuario);
+		//usuarioDAOH.
+		
+		//usuarioDAOH.getClass(email, senha);
+		
+		
+		//System.out.println(usuario);
 		
 		
 		if(usuario.getEmail().equals(email) && usuario.getSenha().equals(senha)) {

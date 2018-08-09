@@ -1,5 +1,6 @@
 function validateForm() {
-    let nome = document.forms['formulario']['nome'].value;
+	
+    let nome = document.forms['form_cadastro']['nome'].value;
 
     if (nome == '') {
         alert("Nome deve ser preenchido!");
@@ -10,7 +11,7 @@ function validateForm() {
         document.getElementById('nome').style.borderColor = 'steelblue';
     }
 
-    let telefone = document.forms['formulario']['telefone'].value;
+    let telefone = document.forms['form_cadastro']['telefone'].value;
 
     if (isTelefoneValido(telefone)) {
         document.cookie = 'telefone=' + telefone;

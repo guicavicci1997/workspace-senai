@@ -1,5 +1,5 @@
 function validateForm() {
-    let nome = document.forms['formulario']['nome'].value;
+    let nome = document.forms['form_cadastro']['nome'].value;
 
     if (nome == '') {
         alert("Nome deve ser preenchido!");

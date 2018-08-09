@@ -141,3 +141,15 @@ input[type="range"] {
     background-repeat: repeat;
 }
 
+#masculino{
+	text-align: left;
+	color: #85ca16;
+	font-weight: bold;
+	
+}
+
+#feminino{
+	text-align: right;
+	color: #ca1648;
+	font-weight: bold;
+}

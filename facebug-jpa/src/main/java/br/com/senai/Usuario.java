@@ -3,6 +3,8 @@ package br.com.senai;
 import java.io.Serializable;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -14,7 +16,9 @@ public class Usuario implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	@Id
+	@Id 
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private int id;
 	private String email;
 	private String nome;
 	private String sobrenome;
@@ -23,19 +27,17 @@ public class Usuario implements Serializable {
 	private Integer genero;
 	private String dataNascimento;
 	
-	public Usuario() {
-		super();
+	public int getId() {
+		return id;
 	}
-	public Usuario(String nome, String sobrenome, String telefone, String senha, String email, Integer genero,
-			String dataNascimento) {
-		super();
-		this.nome = nome;
-		this.sobrenome = sobrenome;
-		this.telefone = telefone;
-		this.senha = senha;
+	public void setId(int id) {
+		this.id = id;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
 		this.email = email;
-		this.genero = genero;
-		this.dataNascimento = dataNascimento;
 	}
 	public String getNome() {
 		return nome;
@@ -61,12 +63,6 @@ public class Usuario implements Serializable {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
-	public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
-		this.email = email;
-	}
 	public Integer getGenero() {
 		return genero;
 	}
@@ -79,6 +75,10 @@ public class Usuario implements Serializable {
 	public void setDataNascimento(String dataNascimento) {
 		this.dataNascimento = dataNascimento;
 	}
+	
+	public Usuario() {
+		super();
+	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -86,6 +86,7 @@ public class Usuario implements Serializable {
 		result = prime * result + ((dataNascimento == null) ? 0 : dataNascimento.hashCode());
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
 		result = prime * result + ((genero == null) ? 0 : genero.hashCode());
+		result = prime * result + id;
 		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
 		result = prime * result + ((senha == null) ? 0 : senha.hashCode());
 		result = prime * result + ((sobrenome == null) ? 0 : sobrenome.hashCode());
@@ -116,6 +117,8 @@ public class Usuario implements Serializable {
 				return false;
 		} else if (!genero.equals(other.genero))
 			return false;
+		if (id != other.id)
+			return false;
 		if (nome == null) {
 			if (other.nome != null)
 				return false;
@@ -140,9 +143,9 @@ public class Usuario implements Serializable {
 	}
 	@Override
 	public String toString() {
-		return "Usuario [nome=" + nome + ", sobrenome=" + sobrenome + ", telefone=" + telefone
-				+ ", senha=" + senha + ", email=" + email + ", genero=" + genero + ", dataNascimento=" + dataNascimento
-				+ "]";
+		return "Usuario [id=" + id + ", email=" + email + ", nome=" + nome + ", sobrenome=" + sobrenome + ", telefone="
+				+ telefone + ", senha=" + senha + ", genero=" + genero + ", dataNascimento=" + dataNascimento + "]";
 	}
-
+	
+	
 }

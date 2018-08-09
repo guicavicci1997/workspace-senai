@@ -20,9 +20,11 @@ public class LoginController {
 	}
 	
 	@RequestMapping(method = RequestMethod.POST)
-	public String login(@RequestParam("email") String email, @RequestParam("senha") String senha, Model model) {
+	public String login(@RequestParam("email") int email, @RequestParam("senha") String senha, Model model) {
 		
 		Usuario usuarioRecuperado = usuarioDAO.findById(email).orElse(new Usuario());
+		//Usuario usuarioRecuperado =	usuarioDAO.fi
+	
 		
 		if(usuarioRecuperado.getEmail().equals(email) && usuarioRecuperado.getSenha().equals(senha)) {
 			model.addAttribute("mensagem", "Bem vindo" + email);

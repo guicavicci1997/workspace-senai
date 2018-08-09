@@ -34,6 +34,7 @@ public class CadastroController {
 			u.setDataNascimento(usuario.getDataNascimento());
 			
 			usuarioDAO.save(u);
+			new EmailService().enviarEmail(u.getNome(), u.getEmail());
 			
 			model.addAttribute("mensagem", "Cadastro realizado com sucesso!");
 			return "/WEB-INF/msg-cadastro-login";
@@ -42,5 +43,7 @@ public class CadastroController {
 			return "/WEB-INF/msg-cadastro-login";
 		}
 	}
+
+
 
 }
